@@ -4,6 +4,7 @@ namespace Bazar\Models;
 
 use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Contracts\Models\Address as Contract;
 use Bazar\Database\Factories\AddressFactory;
@@ -16,6 +17,7 @@ use Illuminate\Http\Request;
 
 class Address extends Model implements Contract
 {
+    use HasTablePrefix;
     use BazarRoutable;
     use Filterable;
     use HasFactory;
@@ -84,13 +86,6 @@ class Address extends Model implements Contract
         'first_name',
         'address_secondary',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_addresses';
 
     /**
      * Get the proxied contract.

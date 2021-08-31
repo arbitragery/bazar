@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Bazar\Support\BaseMigration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBazarMediaTable extends Migration
+class CreateBazarMediaTable extends BaseMigration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBazarMediaTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('bazar_media', static function (Blueprint $table): void {
+        Schema::create("{$this->prefix}media", function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->string('file_name');
@@ -26,9 +26,9 @@ class CreateBazarMediaTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('bazar_mediables', static function (Blueprint $table): void {
+        Schema::create("{$this->prefix}mediables", function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('medium_id')->constrained('bazar_media')->cascadeOnDelete();
+            $table->foreignId('medium_id')->constrained("{$this->prefix}media")->cascadeOnDelete();
             $table->morphs('mediable');
         });
     }
@@ -40,7 +40,7 @@ class CreateBazarMediaTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bazar_mediables');
-        Schema::dropIfExists('bazar_media');
+        Schema::dropIfExists("{$this->prefix}mediables");
+        Schema::dropIfExists("{$this->prefix}media");
     }
 }

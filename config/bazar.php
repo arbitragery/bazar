@@ -18,6 +18,27 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Database
+    |--------------------------------------------------------------------------
+    |
+    | Here your can change database settings.
+    |
+    */
+
+    'database' => [
+
+        /**
+         * This option defines table prefixes for migrations
+         * created by this package. If you want to set the
+         * prefix you can do so by setting
+         * this option to e.g. 'bazar_'
+         */
+
+        'prefix' => ''
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Currencies
     |--------------------------------------------------------------------------
     |

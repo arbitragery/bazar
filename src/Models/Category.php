@@ -5,6 +5,7 @@ namespace Bazar\Models;
 use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\HasMedia;
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Concerns\Sluggable;
 use Bazar\Contracts\Models\Category as Contract;
@@ -18,6 +19,7 @@ use Illuminate\Http\Request;
 
 class Category extends Model implements Contract
 {
+    use HasTablePrefix;
     use BazarRoutable;
     use Filterable;
     use HasFactory;
@@ -45,13 +47,6 @@ class Category extends Model implements Contract
     protected $hidden = [
         'pivot',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_categories';
 
     /**
      * Get the proxied contract.

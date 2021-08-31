@@ -7,6 +7,7 @@ use Bazar\Casts\Prices;
 use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\HasMedia;
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithItemables;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Concerns\InteractsWithStock;
@@ -26,6 +27,7 @@ use Illuminate\Support\Facades\Route;
 
 class Product extends Model implements Contract
 {
+    use HasTablePrefix;
     use BazarRoutable;
     use HasFactory;
     use HasMedia;
@@ -83,13 +85,6 @@ class Product extends Model implements Contract
         'properties',
         'description',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_products';
 
     /**
      * Get the proxied contract.

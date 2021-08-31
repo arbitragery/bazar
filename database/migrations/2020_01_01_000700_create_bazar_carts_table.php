@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Bazar\Support\BaseMigration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBazarCartsTable extends Migration
+class CreateBazarCartsTable extends BaseMigration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateBazarCartsTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('bazar_carts', static function (Blueprint $table): void {
+        Schema::create("{$this->prefix}carts", function (Blueprint $table): void {
             $table->id('id');
             $table->foreignId('user_id')->nullable()->constrained()->cascadeOnDelete();
-            $table->foreignId('order_id')->nullable()->constrained('bazar_orders')->cascadeOnDelete();
+            $table->foreignId('order_id')->nullable()->constrained("{$this->prefix}orders")->cascadeOnDelete();
             $table->string('currency');
             $table->unsignedDecimal('discount')->default(0);
             $table->boolean('locked')->default(false);
@@ -31,6 +31,6 @@ class CreateBazarCartsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bazar_carts');
+        Schema::dropIfExists("{$this->prefix}carts");
     }
 }

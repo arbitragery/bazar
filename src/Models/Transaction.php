@@ -2,6 +2,7 @@
 
 namespace Bazar\Models;
 
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Contracts\Models\Transaction as Contract;
 use Bazar\Database\Factories\TransactionFactory;
@@ -16,6 +17,7 @@ use Throwable;
 
 class Transaction extends Model implements Contract
 {
+    use HasTablePrefix;
     use HasFactory;
     use InteractsWithProxy;
 
@@ -64,13 +66,6 @@ class Transaction extends Model implements Contract
         'driver',
         'completed_at',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_transactions';
 
     /**
      * Get the proxied contract.

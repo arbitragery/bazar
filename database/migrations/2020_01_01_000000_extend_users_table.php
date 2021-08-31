@@ -13,7 +13,7 @@ class ExtendUsersTable extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', static function (Blueprint $table): void {
+        Schema::table('users', function (Blueprint $table): void {
             if (! Schema::hasColumn('users', 'deleted_at')) {
                 $table->softDeletes();
             }
