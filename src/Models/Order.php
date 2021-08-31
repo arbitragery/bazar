@@ -355,15 +355,4 @@ class Order extends Model implements Contract
             return $query->where($query->getModel()->qualifyColumn('id'), $value);
         });
     }
-
-    /**
-     * Get the breadcrumb representation of the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function toBreadcrumb(Request $request): string
-    {
-        return sprintf('#%d', $this->id);
-    }
 }

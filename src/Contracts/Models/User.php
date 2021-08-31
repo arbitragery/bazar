@@ -2,12 +2,11 @@
 
 namespace Bazar\Contracts\Models;
 
-use Bazar\Contracts\Breadcrumbable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-interface User extends Breadcrumbable
+interface User
 {
     /**
      * Get the carts for the user.
@@ -36,11 +35,4 @@ interface User extends Breadcrumbable
      * @return \Illuminate\Database\Eloquent\Relations\MorphMany
      */
     public function addresses(): MorphMany;
-
-    /**
-     * Determine if the user is admin.
-     *
-     * @return bool
-     */
-    public function isAdmin(): bool;
 }

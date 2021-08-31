@@ -195,15 +195,4 @@ class Variant extends Model implements Contract
                     ?: $this->getPrice('default', $itemable->getCurrency())
         ]))->setRelation('buyable', $this);
     }
-
-    /**
-     * Get the breadcrumb representation of the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function toBreadcrumb(Request $request): string
-    {
-        return $this->alias;
-    }
 }

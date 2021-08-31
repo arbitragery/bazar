@@ -164,17 +164,6 @@ class Address extends Model implements Contract
     }
 
     /**
-     * Get the breadcrumb representation of the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function toBreadcrumb(Request $request): string
-    {
-        return $this->alias;
-    }
-
-    /**
      * Scope the query only to the given search term.
      *
      * @param  \Illuminate\Database\Eloquent\Builder  $query

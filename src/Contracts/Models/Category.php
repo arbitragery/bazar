@@ -2,10 +2,9 @@
 
 namespace Bazar\Contracts\Models;
 
-use Bazar\Contracts\Breadcrumbable;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-interface Category extends Breadcrumbable
+interface Category
 {
     /**
      * Get the products for the category.

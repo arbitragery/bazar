@@ -2,13 +2,12 @@
 
 namespace Bazar\Contracts\Models;
 
-use Bazar\Contracts\Breadcrumbable;
 use Bazar\Contracts\Discountable;
 use Bazar\Contracts\Itemable;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-interface Order extends Breadcrumbable, Discountable, Itemable
+interface Order extends Discountable, Itemable
 {
     /**
      * Get the cart for the order.

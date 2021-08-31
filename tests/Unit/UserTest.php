@@ -2,7 +2,6 @@
 
 namespace Bazar\Tests\Unit;
 
-use Bazar\Contracts\Breadcrumbable;
 use Bazar\Models\Address;
 use Bazar\Models\Cart;
 use Bazar\Models\Order;
@@ -80,13 +79,6 @@ class UserTest extends TestCase
     {
         $this->assertFalse($this->user->isAdmin());
         $this->assertTrue($this->admin->isAdmin());
-    }
-
-    /** @test */
-    public function a_user_is_breadcrumbable()
-    {
-        $this->assertInstanceOf(Breadcrumbable::class, $this->user);
-        $this->assertSame($this->user->name, $this->user->toBreadcrumb($this->app['request']));
     }
 
     /** @test */

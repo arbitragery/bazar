@@ -38,7 +38,6 @@ class BazarServiceProvider extends ServiceProvider
         Contracts\Shipping\Manager::class => Shipping\Manager::class,
         Contracts\Conversion\Manager::class => Conversion\Manager::class,
         Contracts\Repositories\TaxRepository::class => Repositories\TaxRepository::class,
-        Contracts\Repositories\MenuRepository::class => Repositories\MenuRepository::class,
         Contracts\Repositories\AssetRepository::class => Repositories\AssetRepository::class,
         Contracts\Repositories\DiscountRepository::class => Repositories\DiscountRepository::class,
     ];
