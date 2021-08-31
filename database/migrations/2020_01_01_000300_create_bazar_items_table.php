@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Bazar\Support\BaseMigration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBazarItemsTable extends Migration
+class CreateBazarItemsTable extends BaseMigration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBazarItemsTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('bazar_items', static function (Blueprint $table): void {
+        Schema::create("{$this->prefix}items", function (Blueprint $table): void {
             $table->uuid('id')->primary();
             $table->morphs('itemable');
             $table->nullableMorphs('buyable');
@@ -33,6 +33,6 @@ class CreateBazarItemsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bazar_items');
+        Schema::dropIfExists("{$this->prefix}items");
     }
 }

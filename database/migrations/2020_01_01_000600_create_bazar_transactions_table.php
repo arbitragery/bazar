@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Bazar\Support\BaseMigration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBazarTransactionsTable extends Migration
+class CreateBazarTransactionsTable extends BaseMigration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateBazarTransactionsTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('bazar_transactions', static function (Blueprint $table): void {
+        Schema::create("{$this->prefix}transactions", function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('order_id')->constrained('bazar_orders')->cascadeOnDelete();
+            $table->foreignId('order_id')->constrained("{$this->prefix}orders")->cascadeOnDelete();
             $table->string('key')->nullable()->unique();
             $table->string('driver');
             $table->string('type');
@@ -32,6 +32,6 @@ class CreateBazarTransactionsTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bazar_transactions');
+        Schema::dropIfExists("{$this->prefix}transactions");
     }
 }

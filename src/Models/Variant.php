@@ -8,6 +8,7 @@ use Bazar\Casts\Prices;
 use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\HasMedia;
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithItemables;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Concerns\InteractsWithStock;
@@ -23,6 +24,7 @@ use Illuminate\Http\Request;
 
 class Variant extends Model implements Contract
 {
+    use HasTablePrefix;
     use BazarRoutable;
     use Filterable;
     use HasFactory;
@@ -75,13 +77,6 @@ class Variant extends Model implements Contract
         'inventory',
         'variation',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_variants';
 
     /**
      * Get the proxied contract.

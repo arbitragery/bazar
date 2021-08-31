@@ -2,6 +2,7 @@
 
 namespace Bazar\Models;
 
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\HasUuid;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Concerns\InteractsWithTaxes;
@@ -14,6 +15,7 @@ use Illuminate\Support\Str;
 
 class Item extends Model implements Contract
 {
+    use HasTablePrefix;
     use HasFactory;
     use HasUuid;
     use InteractsWithProxy;
@@ -88,13 +90,6 @@ class Item extends Model implements Contract
      * @var bool
      */
     public $incrementing = false;
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_items';
 
     /**
      * Get the proxied contract.

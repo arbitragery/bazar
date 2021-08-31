@@ -4,6 +4,7 @@ namespace Bazar\Models;
 
 use Bazar\Bazar;
 use Bazar\Concerns\Addressable;
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithDiscounts;
 use Bazar\Concerns\InteractsWithItems;
 use Bazar\Concerns\InteractsWithProxy;
@@ -17,6 +18,7 @@ use Illuminate\Support\Facades\Date;
 
 class Cart extends Model implements Contract
 {
+    use HasTablePrefix;
     use Addressable;
     use HasFactory;
     use InteractsWithDiscounts;
@@ -54,13 +56,6 @@ class Cart extends Model implements Contract
         'discount',
         'currency',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_carts';
 
     /**
      * The "booted" method of the model.

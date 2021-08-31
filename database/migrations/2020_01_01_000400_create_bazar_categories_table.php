@@ -1,10 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
+use Bazar\Support\BaseMigration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBazarCategoriesTable extends Migration
+class CreateBazarCategoriesTable extends BaseMigration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateBazarCategoriesTable extends Migration
      */
     public function up(): void
     {
-        Schema::create('bazar_categories', static function (Blueprint $table): void {
+        Schema::create("{$this->prefix}categories", function (Blueprint $table): void {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
@@ -22,10 +22,10 @@ class CreateBazarCategoriesTable extends Migration
             $table->softDeletes();
         });
 
-        Schema::create('bazar_category_product', static function (Blueprint $table): void {
+        Schema::create("{$this->prefix}category_product", function (Blueprint $table): void {
             $table->id();
-            $table->foreignId('category_id')->constrained('bazar_categories')->cascadeOnDelete();
-            $table->foreignId('product_id')->constrained('bazar_products')->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained("{$this->prefix}categories")->cascadeOnDelete();
+            $table->foreignId('product_id')->constrained("{$this->prefix}products")->cascadeOnDelete();
         });
     }
 
@@ -36,7 +36,7 @@ class CreateBazarCategoriesTable extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('bazar_category_product');
-        Schema::dropIfExists('bazar_categories');
+        Schema::dropIfExists("{$this->prefix}category_product");
+        Schema::dropIfExists("{$this->prefix}categories");
     }
 }

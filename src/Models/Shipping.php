@@ -3,6 +3,7 @@
 namespace Bazar\Models;
 
 use Bazar\Concerns\Addressable;
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Concerns\InteractsWithTaxes;
 use Bazar\Contracts\Models\Shipping as Contract;
@@ -16,6 +17,7 @@ use Throwable;
 
 class Shipping extends Model implements Contract
 {
+    use HasTablePrefix;
     use Addressable;
     use HasFactory;
     use InteractsWithProxy;
@@ -61,13 +63,6 @@ class Shipping extends Model implements Contract
         'cost',
         'driver',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_shippings';
 
     /**
      * The "booted" method of the model.

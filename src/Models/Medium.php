@@ -3,6 +3,7 @@
 namespace Bazar\Models;
 
 use Bazar\Concerns\Filterable;
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Contracts\Models\Medium as Contract;
 use Bazar\Database\Factories\MediumFactory;
@@ -17,6 +18,7 @@ use Illuminate\Support\Str;
 
 class Medium extends Model implements Contract
 {
+    use HasTablePrefix;
     use Filterable;
     use HasFactory;
     use InteractsWithProxy;
@@ -64,13 +66,6 @@ class Medium extends Model implements Contract
         'mime_type',
         'properties',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_media';
 
     /**
      * The "booted" method of the model.

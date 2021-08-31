@@ -6,6 +6,7 @@ use Bazar\Bazar;
 use Bazar\Concerns\Addressable;
 use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
+use Bazar\Concerns\HasTablePrefix;
 use Bazar\Concerns\InteractsWithDiscounts;
 use Bazar\Concerns\InteractsWithItems;
 use Bazar\Concerns\InteractsWithProxy;
@@ -24,6 +25,7 @@ use Illuminate\Support\Collection;
 
 class Order extends Model implements Contract
 {
+    use HasTablePrefix;
     use Addressable;
     use BazarRoutable;
     use HasFactory;
@@ -81,13 +83,6 @@ class Order extends Model implements Contract
         'currency',
         'discount',
     ];
-
-    /**
-     * The table associated with the model.
-     *
-     * @var string
-     */
-    protected $table = 'bazar_orders';
 
     /**
      * Get the proxied contract.
