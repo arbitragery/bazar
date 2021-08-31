@@ -2,7 +2,6 @@
 
 namespace Bazar\Tests\Unit;
 
-use Bazar\Contracts\Breadcrumbable;
 use Bazar\Models\Product;
 use Bazar\Models\Variant;
 use Bazar\Tests\TestCase;
@@ -40,13 +39,6 @@ class VariantTest extends TestCase
         $variant->save();
 
         $this->assertSame("#{$variant->id}", $variant->alias);
-    }
-
-    /** @test */
-    public function it_is_breadcrumbable()
-    {
-        $this->assertInstanceOf(Breadcrumbable::class, $this->variant);
-        $this->assertSame($this->variant->alias, $this->variant->toBreadcrumb($this->app['request']));
     }
 
     /** @test */

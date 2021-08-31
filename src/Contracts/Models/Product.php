@@ -2,7 +2,6 @@
 
 namespace Bazar\Contracts\Models;
 
-use Bazar\Contracts\Breadcrumbable;
 use Bazar\Contracts\Buyable;
 use Bazar\Contracts\Stockable;
 use Bazar\Models\Variant;
@@ -11,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 
-interface Product extends Buyable, Breadcrumbable, Stockable
+interface Product extends Buyable, Stockable
 {
         /**
      * Get the items for the product.

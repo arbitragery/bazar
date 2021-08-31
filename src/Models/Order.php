@@ -2,9 +2,7 @@
 
 namespace Bazar\Models;
 
-use Bazar\Bazar;
 use Bazar\Concerns\Addressable;
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\InteractsWithDiscounts;
 use Bazar\Concerns\InteractsWithItems;
@@ -25,7 +23,6 @@ use Illuminate\Support\Collection;
 class Order extends Model implements Contract
 {
     use Addressable;
-    use BazarRoutable;
     use HasFactory;
     use InteractsWithDiscounts;
     use InteractsWithItems;
@@ -357,16 +354,5 @@ class Order extends Model implements Contract
         return $query->whereHas('user', static function (Builder $query) use ($value): Builder {
             return $query->where($query->getModel()->qualifyColumn('id'), $value);
         });
-    }
-
-    /**
-     * Get the breadcrumb representation of the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function toBreadcrumb(Request $request): string
-    {
-        return sprintf('#%d', $this->id);
     }
 }

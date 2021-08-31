@@ -4,7 +4,6 @@ namespace Bazar\Tests\Unit;
 
 use Bazar\Casts\Inventory;
 use Bazar\Casts\Prices;
-use Bazar\Contracts\Breadcrumbable;
 use Bazar\Models\Cart;
 use Bazar\Models\Category;
 use Bazar\Models\Item;
@@ -131,13 +130,6 @@ class ProductTest extends TestCase
         $this->product->prices['usd']['sale'] = 10;
         $this->product->save();
         $this->assertDatabaseHas('bazar_products', ['prices->usd->sale' => 10]);
-    }
-
-    /** @test */
-    public function it_is_breadcrumbable()
-    {
-        $this->assertInstanceOf(Breadcrumbable::class, $this->product);
-        $this->assertSame($this->product->name, $this->product->toBreadcrumb($this->app['request']));
     }
 
     /** @test */

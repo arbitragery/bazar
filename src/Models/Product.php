@@ -4,7 +4,6 @@ namespace Bazar\Models;
 
 use Bazar\Casts\Inventory;
 use Bazar\Casts\Prices;
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\HasMedia;
 use Bazar\Concerns\InteractsWithItemables;
@@ -26,7 +25,6 @@ use Illuminate\Support\Facades\Route;
 
 class Product extends Model implements Contract
 {
-    use BazarRoutable;
     use HasFactory;
     use HasMedia;
     use InteractsWithItemables;
@@ -269,16 +267,5 @@ class Product extends Model implements Contract
             'price' => $this->getPrice('sale', $itemable->getCurrency())
                     ?: $this->getPrice('default', $itemable->getCurrency())
         ]))->setRelation('buyable', $this);
-    }
-
-    /**
-     * Get the breadcrumb representation of the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function toBreadcrumb(Request $request): string
-    {
-        return $this->name;
     }
 }

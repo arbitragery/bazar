@@ -2,7 +2,6 @@
 
 namespace Bazar\Models;
 
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Contracts\Models\User as Contract;
@@ -15,30 +14,17 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\MorphMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Str;
 
 class User extends Authenticatable implements Contract, MustVerifyEmail
 {
-    use BazarRoutable;
     use Filterable;
     use HasFactory;
     use InteractsWithProxy;
     use Notifiable;
     use SoftDeletes;
-
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
-    protected $appends = [
-        'avatar',
-    ];
 
     /**
      * The attributes that should have default values.
@@ -161,37 +147,6 @@ class User extends Authenticatable implements Contract, MustVerifyEmail
     public function getAddressAttribute(): ?Address
     {
         return $this->addresses->firstWhere('default', true) ?: $this->addresses->first();
-    }
-
-    /**
-     * Get the avatar attribute.
-     *
-     * @return string
-     */
-    public function getAvatarAttribute(): string
-    {
-        return URL::asset('vendor/bazar/img/avatar-placeholder.svg');
-    }
-
-    /**
-     * Determine if the user is admin.
-     *
-     * @return bool
-     */
-    public function isAdmin(): bool
-    {
-        return in_array($this->email, Config::get('bazar.admins', []));
-    }
-
-    /**
-     * Get the breadcrumb representation of the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function toBreadcrumb(Request $request): string
-    {
-        return $this->name;
     }
 
     /**

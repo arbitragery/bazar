@@ -2,7 +2,6 @@
 
 namespace Bazar\Models;
 
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Contracts\Models\Address as Contract;
@@ -16,7 +15,6 @@ use Illuminate\Http\Request;
 
 class Address extends Model implements Contract
 {
-    use BazarRoutable;
     use Filterable;
     use HasFactory;
     use InteractsWithProxy;
@@ -163,17 +161,6 @@ class Address extends Model implements Contract
     public function custom(string $key, $default = null)
     {
         return $this->custom[$key] ?? $default;
-    }
-
-    /**
-     * Get the breadcrumb representation of the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function toBreadcrumb(Request $request): string
-    {
-        return $this->alias;
     }
 
     /**

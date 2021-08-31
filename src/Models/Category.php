@@ -2,7 +2,6 @@
 
 namespace Bazar\Models;
 
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\HasMedia;
 use Bazar\Concerns\InteractsWithProxy;
@@ -18,7 +17,6 @@ use Illuminate\Http\Request;
 
 class Category extends Model implements Contract
 {
-    use BazarRoutable;
     use Filterable;
     use HasFactory;
     use HasMedia;
@@ -81,17 +79,6 @@ class Category extends Model implements Contract
     public function products(): BelongsToMany
     {
         return $this->belongsToMany(Product::getProxiedClass(), 'bazar_category_product');
-    }
-
-    /**
-     * Get the breadcrumb representation of the object.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return string
-     */
-    public function toBreadcrumb(Request $request): string
-    {
-        return $this->name;
     }
 
     /**
