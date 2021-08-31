@@ -2,7 +2,6 @@
 
 namespace Bazar\Models;
 
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Contracts\Models\User as Contract;
@@ -24,7 +23,6 @@ use Illuminate\Support\Str;
 
 class User extends Authenticatable implements Contract, MustVerifyEmail
 {
-    use BazarRoutable;
     use Filterable;
     use HasFactory;
     use InteractsWithProxy;

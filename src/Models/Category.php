@@ -2,7 +2,6 @@
 
 namespace Bazar\Models;
 
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\HasMedia;
 use Bazar\Concerns\InteractsWithProxy;
@@ -18,7 +17,6 @@ use Illuminate\Http\Request;
 
 class Category extends Model implements Contract
 {
-    use BazarRoutable;
     use Filterable;
     use HasFactory;
     use HasMedia;

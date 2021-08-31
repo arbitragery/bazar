@@ -2,7 +2,6 @@
 
 namespace Bazar\Models;
 
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\InteractsWithProxy;
 use Bazar\Contracts\Models\Address as Contract;
@@ -16,7 +15,6 @@ use Illuminate\Http\Request;
 
 class Address extends Model implements Contract
 {
-    use BazarRoutable;
     use Filterable;
     use HasFactory;
     use InteractsWithProxy;

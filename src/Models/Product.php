@@ -4,7 +4,6 @@ namespace Bazar\Models;
 
 use Bazar\Casts\Inventory;
 use Bazar\Casts\Prices;
-use Bazar\Concerns\BazarRoutable;
 use Bazar\Concerns\Filterable;
 use Bazar\Concerns\HasMedia;
 use Bazar\Concerns\InteractsWithItemables;
@@ -26,7 +25,6 @@ use Illuminate\Support\Facades\Route;
 
 class Product extends Model implements Contract
 {
-    use BazarRoutable;
     use HasFactory;
     use HasMedia;
     use InteractsWithItemables;
