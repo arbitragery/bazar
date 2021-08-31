@@ -4,20 +4,6 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Bazar Administrators
-    |--------------------------------------------------------------------------
-    |
-    | Here your can define administrators by their email address. By default
-    | the given values are used by the 'manage-bazar' Gate defnition.
-    |
-    */
-
-    'admins' => [
-        'admin@bazar.test',
-    ],
-
-    /*
-    |--------------------------------------------------------------------------
     | Currencies
     |--------------------------------------------------------------------------
     |
