@@ -62,14 +62,11 @@ class BazarServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $this->registerAuth();
         $this->registerEvents();
         $this->registerMacros();
         $this->registerLoadings();
         $this->registerCommands();
         $this->registerPublishes();
-        $this->registerComposers();
-        $this->registerMenuItems();
         $this->registerConversions();
     }
 
